@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'analyis',
+    'analyis', 'ecl_calculations.apps.EclCalculationsConfig',
+ 'financial_statements',
     'scenario_data',
     'obligor_data',
     'finance',
