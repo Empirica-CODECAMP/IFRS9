@@ -10,12 +10,12 @@
     <style>
         body {
             display: flex;
-            background-color: #f4f4f4; /* Light gray background */
+            background-color: #f4f4f4;
         }
         .sidebar {
             width: 250px;
             height: 100vh;
-            background: #4f4f4f; /* Dark gray for sidebar */
+            background: #4f4f4f;
             color: white;
             padding-top: 20px;
             position: fixed;
@@ -27,13 +27,13 @@
             padding: 10px 20px;
         }
         .sidebar a:hover {
-            background: #616161; /* Lighter gray on hover */
+            background: #616161;
         }
         .content {
             flex-grow: 1;
             padding: 20px;
             margin-left: 260px;
-            background-color: #e9ecef; /* Lighter background for content */
+            background-color: #e9ecef;
         }
         .chart-container {
             display: flex;
@@ -42,7 +42,7 @@
         .chart-box {
             width: 30%;
             padding: 10px;
-            background: #ffffff; /* White background for charts */
+            background: #ffffff;
             border-radius: 10px;
         }
         .dropdown-menu {
@@ -114,6 +114,26 @@
                 <a class="dropdown-item" href="{% url 'loan_analytics' %}">Analytics</a>
             </div>
         </div>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              ECL Reports
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'stage_allocation_report_list' %}">Stage Allocation Report</a></li>
+              <li><a class="dropdown-item" href="{% url 'loss_allowance_list' %}">Loss Allowance</a></li>
+              <li><a class="dropdown-item" href="{% url 'credit_risk_exposure_list' %}">Credit Risk Exposure</a></li>
+            </ul>
+        </li>
+          
+        <!-- Financial Statements Dropdown -->
+       
+                <a class="dropdown-item" href="{% url 'financial_statements_landing' %}">Financial Statements</a>
+            </div>
+            
+                    <a href="{% url 'calculations' %}" class="dashboard-link" data-src="{% url 'calculations' %}">🧮 calculations</a>
+            
+            </div>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -153,50 +173,37 @@
     </div>
 
     <script>
-        // 📊 Data Quality Chart
         new Chart(document.getElementById("dataQualityChart"), {
             type: "doughnut",
-            data: { 
-                labels: ["Quality", "Issues"], 
-                datasets: [{
-                    data: [98, 2], 
-                    backgroundColor: ["#333333", "#555555"] // Monochrome colors
-                }] 
+            data: {
+                labels: ["Quality", "Issues"],
+                datasets: [{ data: [98, 2], backgroundColor: ["#333333", "#555555"] }]
             }
         });
 
-        // 📊 Accuracy & Integrity Chart
         new Chart(document.getElementById("accuracyChart"), {
             type: "doughnut",
-            data: { 
-                labels: ["Accurate", "Errors"], 
-                datasets: [{
-                    data: [83, 17], 
-                    backgroundColor: ["#666666", "#888888"] // Monochrome colors
-                }] 
+            data: {
+                labels: ["Accurate", "Errors"],
+                datasets: [{ data: [83, 17], backgroundColor: ["#666666", "#888888"] }]
             }
         });
 
-        // 📊 Completeness Chart
         new Chart(document.getElementById("completenessChart"), {
             type: "doughnut",
-            data: { 
-                labels: ["Complete", "Missing"], 
-                datasets: [{
-                    data: [100, 0], 
-                    backgroundColor: ["#444444", "#777777"] // Monochrome colors
-                }] 
+            data: {
+                labels: ["Complete", "Missing"],
+                datasets: [{ data: [100, 0], backgroundColor: ["#444444", "#777777"] }]
             }
         });
 
-        // 📊 ECL Stage Performance Chart
         new Chart(document.getElementById("eclStageChart"), {
             type: "bar",
             data: {
                 labels: ["Stage 1", "Stage 2", "Stage 3"],
                 datasets: [
-                    { label: "Target (%)", data: [90, 70, 40], backgroundColor: "#333333" },  // Monochrome
-                    { label: "Current (%)", data: [88, 65, 35], backgroundColor: "#555555" }  // Monochrome
+                    { label: "Target (%)", data: [90, 70, 40], backgroundColor: "#333333" },
+                    { label: "Current (%)", data: [88, 65, 35], backgroundColor: "#555555" }
                 ]
             },
             options: {
@@ -205,19 +212,17 @@
             }
         });
 
-        // 📊 IFRS9 Data Insights Chart
         new Chart(document.getElementById("ifrs9InsightsChart"), {
             type: "bar",
             data: {
                 labels: ["Q1", "Q2", "Q3", "Q4"],
                 datasets: [
-                    { label: "PD", data: [2.5, 3.1, 3.8, 4.2], backgroundColor: "#444444" }, // Monochrome color
-                    { label: "LGD", data: [40, 45, 50, 55], backgroundColor: "#666666" } // Monochrome color
+                    { label: "PD", data: [2.5, 3.1, 3.8, 4.2], backgroundColor: "#444444" },
+                    { label: "LGD", data: [40, 45, 50, 55], backgroundColor: "#666666" }
                 ]
             }
         });
 
-        // 📊 IFRS9 Data Dashboard Trends Chart
         new Chart(document.getElementById("ifrs9DashboardChart"), {
             type: "line",
             data: {
@@ -225,7 +230,7 @@
                 datasets: [{
                     label: "Trends",
                     data: [12, 19, 3, 5, 2],
-                    borderColor: "#333333", // Monochrome border color
+                    borderColor: "#333333",
                     fill: false
                 }]
             }

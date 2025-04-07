@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculations</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        /* Messages Styling */
+        #messages {
+            width: 90%;
+            max-width: 600px;
+            margin: 15px auto;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+            display: none; /* Initially hidden */
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.running {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            margin: 15px auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 14px;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: border 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #555;
+            outline: none;
+        }
+
+        /* Button Styling */
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #444;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+    <script>
+        function runModel(event) {
+            event.preventDefault();  // Prevent form submission
+
+            let messagesDiv = document.getElementById("messages");
+            messagesDiv.innerHTML = '<div class="message running">Running the model... Please wait.</div>';
+            messagesDiv.style.display = "block";
+
+            // Simulate a delay before showing success message
+            setTimeout(() => {
+                messagesDiv.innerHTML = '<div class="message success">Model has run successfully!</div>';
+            }, 3000); // 3-second delay
+        }
+    </script>
+</head>
+<body>
+    <h1>Run Model</h1>
+
+    <!-- Messages Section -->
+    <div id="messages"></div>
+
+    <!-- Form -->
+    <form onsubmit="runModel(event)">
+        {% csrf_token %}
+
+        <!-- RunNr Dropdown -->
+        <label for="RunNr">Run Number:</label>
+        <select name="RunNr" id="RunNr">
+            {% for i in years %}
+            <option value="{{ i }}" {% if i == current_year %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- NBRunNr Dropdown -->
+        <label for="NBRunNr">NB Run Number:</label>
+        <select name="NBRunNr" id="NBRunNr">
+            {% for i in years %}
+            <option value="{{ i }}" {% if i == current_year %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- PrevRunNr Dropdown -->
+        <label for="PrevRunNr">Previous Run Number:</label>
+        <select name="PrevRunNr" id="PrevRunNr">
+            {% for i in years %}
+            <option value="{{ i }}" {% if i == current_year %}selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Submit Button -->
+        <button type="submit">Run Models</button>
+    </form>
+</body>
+</html>

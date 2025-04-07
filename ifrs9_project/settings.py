@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'analyis', 'ecl_calculations.apps.EclCalculationsConfig',
- 'financial_statements',
+    'analyis',
+ 'financial_statements', 
     'scenario_data',
     'obligor_data',
     'finance',
@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', 
+    "calculations",
+    'ecl_calculations',
 ]
 
 MIDDLEWARE = [
