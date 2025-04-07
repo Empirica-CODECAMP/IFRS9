@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'analyis',
+ 'financial_statements', 
     'scenario_data',
     'obligor_data',
     'finance',
@@ -41,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', 
+    "calculations",
+    'ecl_calculations',
 ]
 
 MIDDLEWARE = [

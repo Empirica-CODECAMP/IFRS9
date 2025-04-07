@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .section-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .section-card h3 {
+        color: #333333;
+        border-bottom: 1px solid #dddddd;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+    }
+    .file-list {
+        list-style: none;
+        padding: 0;
+    }
+    .file-list li {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #444;
+    }
+    .file-name {
+        flex-grow: 1;
+        font-weight: 500;
+    }
+    .file-actions a {
+        margin-left: 10px;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .btn-download {
+        background-color: #4f4f4f;
+        color: white;
+    }
+    .btn-download:hover {
+        background-color: #333;
+    }
+    .btn-view {
+        background-color: #007bff;
+        color: white;
+    }
+    .btn-view:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<h2 class="mb-4">📁 Financial Statements</h2>
+
+<div class="section-card">
+    <h3>📄 Statement of Incomes</h3>
+    <ul class="file-list">
+        {% for file in incomes %}
+        <li>
+            <span class="file-name">🧾 {{ file.name }}</span>
+            <span class="file-actions">
+                <a href="{{ file.file.url }}" download class="btn-download">⬇️ Download</a>
+                <a href="{% url 'view_excel' 'income' file.id %}" class="btn-view">🔍 View</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="section-card">
+    <h3>📘 Statement of Financial Positions</h3>
+    <ul class="file-list">
+        {% for file in positions %}
+        <li>
+            <span class="file-name">📊 {{ file.name }}</span>
+            <span class="file-actions">
+                <a href="{{ file.file.url }}" download class="btn-download">⬇️ Download</a>
+                <a href="{% url 'view_excel' 'position' file.id %}" class="btn-view">🔍 View</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="section-card">
+    <h3>💹 Statement of Changes in Equity</h3>
+    <ul class="file-list">
+        {% for file in equitys %}
+        <li>
+            <span class="file-name">📈 {{ file.name }}</span>
+            <span class="file-actions">
+                <a href="{{ file.file.url }}" download class="btn-download">⬇️ Download</a>
+                <a href="{% url 'view_excel' 'equity' file.id %}" class="btn-view">🔍 View</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="section-card">
+    <h3>💰 Statement of Cashflows</h3>
+    <ul class="file-list">
+        {% for file in cashflows %}
+        <li>
+            <span class="file-name">💵 {{ file.name }}</span>
+            <span class="file-actions">
+                <a href="{{ file.file.url }}" download class="btn-download">⬇️ Download</a>
+                <a href="{% url 'view_excel' 'cashflow' file.id %}" class="btn-view">🔍 View</a>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

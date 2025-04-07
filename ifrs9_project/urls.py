@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from obligor_data.views import home
+from calculations import views as calculations_views  # Import your view
+from calculations.admin import admin_site
 
 
 urlpatterns = [
@@ -25,5 +27,21 @@ urlpatterns = [
     path('', home, name='home'),
     path('scenario/', include('scenario_data.urls')),
     path("analysis/", include("analyis.urls")),
+    path('financial-statements/', include('financial_statements.urls')),
+    path('ecl-calculations/', include('ecl_calculations.urls')),
+    path('calculations/', include('calculations.urls')),
+ 
+
+
+  
+
 ]
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

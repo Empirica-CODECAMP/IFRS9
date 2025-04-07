@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>📊 ECL calculations</h2>
+
+<h3>ECL Reports</h3>
+<ul>
+  {% for file in ecl_reports %}
+    <li><a href="{{ file.upload_file.url }}" download>{{ file.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<h3>Stage Allocation Reports</h3>
+<ul>
+  {% for file in stage_allocations %}
+    <li><a href="{{ file.upload_file.url }}" download>{{ file.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<h3>Loss Allowances</h3>
+<ul>
+  {% for file in loss_allowances %}
+    <li><a href="{{ file.upload_file.url }}" download>{{ file.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<h3>Credit Risk Exposures</h3>
+<ul>
+  {% for file in credit_exposures %}
+    <li><a href="{{ file.upload_file.url }}" download>{{ file.title }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
