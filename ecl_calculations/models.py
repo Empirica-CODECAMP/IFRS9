@@ -1,3 +1,4 @@
+
 from django.db import models
 
 class ECLReport(models.Model):
@@ -31,3 +32,4 @@ class CreditRiskExposure(models.Model):
 
     def __str__(self):
         return self.name
+

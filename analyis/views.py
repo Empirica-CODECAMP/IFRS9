@@ -28,5 +28,3 @@ def loan_analytics(request):
 
     # 🎯 Pass data to template instead of returning JSON
     return render(request, "loan_analytics.html", {"data": data})
-
-

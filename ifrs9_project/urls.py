@@ -25,5 +25,20 @@ urlpatterns = [
     path('', home, name='home'),
     path('scenario/', include('scenario_data.urls')),
     path("analysis/", include("analyis.urls")),
+    path('financial-statements/', include('financial_statements.urls')),
+    path('calculations/', include('calculations.urls')),
+    path('ecl-calculations/', include('ecl_calculations.urls')),
+
+
+  
+
 ]
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -114,7 +114,33 @@
                 <a class="dropdown-item" href="{% url 'loan_analytics' %}">Analytics</a>
             </div>
         </div>
-    </div>
+        
+
+    <!-- ECL Reports Dropdown -->
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">ECL Reports</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'ecl_landing' %}">ECL Reports</a>
+
+        </div>
+        
+      
+    <!-- Financial Statements Dropdown -->
+    <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Financial Statements</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'financial_statements_landing' %}">Financial Statements</a>
+
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Calculations</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{% url 'calculations' %}">Run Model</a>
+            </div>
+        </div>
+        
+
+</div>
 
     <!-- Main Content -->
     <div class="content">
