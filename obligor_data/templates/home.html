@@ -1,241 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFRS9 Dashboard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            display: flex;
-            background-color: #f4f4f4;
-        }
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background: #4f4f4f;
-            color: white;
-            padding-top: 20px;
-            position: fixed;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px 20px;
-        }
-        .sidebar a:hover {
-            background: #616161;
-        }
-        .content {
-            flex-grow: 1;
-            padding: 20px;
-            margin-left: 260px;
-            background-color: #e9ecef;
-        }
-        .chart-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .chart-box {
-            width: 30%;
-            padding: 10px;
-            background: #ffffff;
-            border-radius: 10px;
-        }
-        .dropdown-menu {
-            background: #4f4f4f;
-            border: none;
-        }
-        .dropdown-item {
-            color: white;
-        }
-        .dropdown-item:hover {
-            background: #616161;
-        }
-        .btn-management-report {
-            margin-top: 20px;
-            background-color: #4f4f4f;
-            color: white;
-            border: none;
-        }
-        .btn-management-report:hover {
-            background-color: #616161;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IFRS9 Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      display: flex;
+      background-color: #f4f4f4;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #4f4f4f;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      overflow-y: auto;
+    }
+
+    .sidebar h4 {
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: #e0e0e0;
+      text-decoration: none;
+      display: block;
+      padding: 8px 20px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background: #616161;
+      color: white;
+    }
+
+    .sidebar-group {
+      background: #3c3c3c;
+      margin: 0 10px 15px 10px;
+      border-radius: 6px;
+      padding-bottom: 10px;
+    }
+
+    .sidebar-group-title {
+      padding: 10px 20px;
+      font-weight: bold;
+      background-color: #2c2c2c;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      margin-bottom: 5px;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      margin-left: 260px;
+      background-color: #e9ecef;
+    }
+
+    .chart-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .chart-box {
+      width: 30%;
+      padding: 10px;
+      background: #ffffff;
+      border-radius: 10px;
+    }
+
+    .btn-management-report {
+      margin-top: 20px;
+      background-color: #4f4f4f;
+      color: white;
+      border: none;
+    }
+
+    .btn-management-report:hover {
+      background-color: #616161;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h4 class="text-center">Empirica IFRS 9 PAM 1000 ®</h4>
-        <a href="{% url 'obligor_list' %}">Obligor Level Data</a>
-        <a href="{% url 'scenario_data'%}">Scenario Data</a>
-        
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Application Scorecard</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">TTC</a>
-                <a class="dropdown-item" href="#">PIT</a>
-            </div>
-        </div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h4 class="text-center">Empirica IFRS 9 PAM 1000 ®</h4>
 
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Statistical Model</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="{% url 'logistic_regression_detail'%}">Logistic Regression</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Basel</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Get 1 Year PD</a>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">IFRS 9</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="{% url 'dashboard' %}">Factor Models</a>
-                <a class="dropdown-item" href="#">Stage 1</a>
-                <a class="dropdown-item" href="#">Stage 2</a>
-                <a class="dropdown-item" href="#">Stage 3</a>
-            </div>
-        </div>
-
-        <!-- 🆕 Analysis Dropdown -->
-        <div class="dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">Analysis</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="{% url 'loan_data_list' %}">Analysis Data</a>
-                <a class="dropdown-item" href="{% url 'loan_analytics' %}">Analytics</a>
-            </div>
-        </div>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              ECL Reports
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'stage_allocation_report_list' %}">Stage Allocation Report</a></li>
-              <li><a class="dropdown-item" href="{% url 'loss_allowance_list' %}">Loss Allowance</a></li>
-              <li><a class="dropdown-item" href="{% url 'credit_risk_exposure_list' %}">Credit Risk Exposure</a></li>
-            </ul>
-        </li>
-          
-        <!-- Financial Statements Dropdown -->
-       
-                <a class="dropdown-item" href="{% url 'financial_statements_landing' %}">Financial Statements</a>
-            </div>
-            
-                    <a href="{% url 'calculations' %}" class="dashboard-link" data-src="{% url 'calculations' %}">🧮 calculations</a>
-            
-            </div>
-        </div>
+    <!-- 📂 Obligor Group -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">📂 Obligor Data</div>
+      <a href="{% url 'obligor_list' %}">Obligor Level Data</a>
+      <a href="{% url 'scenario_data' %}">Scenario Data</a>
+      <a href="#">Application Scorecard - TTC</a>
+      <a href="#">Application Scorecard - PIT</a>
+      <a href="{% url 'loan_data_list' %}">Analysis Data</a>
+      <a href="{% url 'loan_analytics' %}">Analytics</a>
     </div>
 
-    <!-- Main Content -->
-    <div class="content">
-        <h2 class="mt-4">Welcome to IFRS9 Dashboard</h2>
-
-        <!-- 📊 Management Report Button -->
-        <a href="{% url 'loan_analytics' %}" class="btn btn-management-report">Management Report</a>
-
-        <!-- 📊 Data Quality Metrics -->
-        <div class="chart-container">
-            <div class="chart-box">
-                <h5>Overall Data Quality</h5>
-                <canvas id="dataQualityChart"></canvas>
-            </div>
-            <div class="chart-box">
-                <h5>Accuracy & Integrity</h5>
-                <canvas id="accuracyChart"></canvas>
-            </div>
-            <div class="chart-box">
-                <h5>Completeness</h5>
-                <canvas id="completenessChart"></canvas>
-            </div>
-        </div>
-
-        <!-- 📊 ECL Stage Performance Chart -->
-        <h4 class="mt-4">ECL Stage Performance</h4>
-        <canvas id="eclStageChart"></canvas>
-
-        <!-- 📊 IFRS9 Data Insights -->
-        <h4 class="mt-4">IFRS9 Data Insights</h4>
-        <canvas id="ifrs9InsightsChart"></canvas>
-
-        <!-- 📊 IFRS9 Data Dashboard Trends -->
-        <h4 class="mt-4">IFRS9 Data Trends</h4>
-        <canvas id="ifrs9DashboardChart"></canvas>
+    <!-- 📊 Models Group -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">📊 Models</div>
+      <a href="{% url 'logistic_regression_detail' %}">Logistic Regression</a>
+      <a href="{% url 'neural_networks' %}">Neural Networks</a>
+      <a href="{% url 'factor_models' %}">Factor Models</a>
+      <a href="{% url 'stage1' %}">Stage 1</a>
+      <a href="{% url 'stage2' %}">Stage 2</a>
+      <a href="{% url 'stage3' %}">Stage 3</a>
+      
     </div>
 
-    <script>
-        new Chart(document.getElementById("dataQualityChart"), {
-            type: "doughnut",
-            data: {
-                labels: ["Quality", "Issues"],
-                datasets: [{ data: [98, 2], backgroundColor: ["#333333", "#555555"] }]
-            }
-        });
+    <!-- 📝 ECL Reports -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">📝 ECL Reports</div>
+      <a href="{% url 'stage_allocation_report_list' %}">Stage Allocation Report</a>
+      <a href="{% url 'loss_allowance_list' %}">Loss Allowance</a>
+      <a href="{% url 'credit_risk_exposure_list' %}">Credit Risk Exposure</a>
+    </div>
 
-        new Chart(document.getElementById("accuracyChart"), {
-            type: "doughnut",
-            data: {
-                labels: ["Accurate", "Errors"],
-                datasets: [{ data: [83, 17], backgroundColor: ["#666666", "#888888"] }]
-            }
-        });
+    <!-- 📁 Financials -->
+    <div class="sidebar-group">
+      <div class="sidebar-group-title">📁 Financials</div>
+      <a href="{% url 'financial_statements_landing' %}">Financial Statements</a>
+      <a href="{% url 'calculations' %}">🧮 Calculations</a>
+    </div>
+  </div>
 
-        new Chart(document.getElementById("completenessChart"), {
-            type: "doughnut",
-            data: {
-                labels: ["Complete", "Missing"],
-                datasets: [{ data: [100, 0], backgroundColor: ["#444444", "#777777"] }]
-            }
-        });
+  <!-- Main Content -->
+  <div class="content">
+    <h2 class="mt-4">Welcome to IFRS9 Dashboard</h2>
 
-        new Chart(document.getElementById("eclStageChart"), {
-            type: "bar",
-            data: {
-                labels: ["Stage 1", "Stage 2", "Stage 3"],
-                datasets: [
-                    { label: "Target (%)", data: [90, 70, 40], backgroundColor: "#333333" },
-                    { label: "Current (%)", data: [88, 65, 35], backgroundColor: "#555555" }
-                ]
-            },
-            options: {
-                responsive: true,
-                scales: { y: { beginAtZero: true, max: 100 } }
-            }
-        });
+    <a href="{% url 'loan_analytics' %}" class="btn btn-management-report">Management Report</a>
 
-        new Chart(document.getElementById("ifrs9InsightsChart"), {
-            type: "bar",
-            data: {
-                labels: ["Q1", "Q2", "Q3", "Q4"],
-                datasets: [
-                    { label: "PD", data: [2.5, 3.1, 3.8, 4.2], backgroundColor: "#444444" },
-                    { label: "LGD", data: [40, 45, 50, 55], backgroundColor: "#666666" }
-                ]
-            }
-        });
+    <div class="chart-container mt-4">
+      <div class="chart-box">
+        <h5>Overall Data Quality</h5>
+        <canvas id="dataQualityChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h5>Accuracy & Integrity</h5>
+        <canvas id="accuracyChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h5>Completeness</h5>
+        <canvas id="completenessChart"></canvas>
+      </div>
+    </div>
 
-        new Chart(document.getElementById("ifrs9DashboardChart"), {
-            type: "line",
-            data: {
-                labels: ["January", "February", "March", "April", "May"],
-                datasets: [{
-                    label: "Trends",
-                    data: [12, 19, 3, 5, 2],
-                    borderColor: "#333333",
-                    fill: false
-                }]
-            }
-        });
-    </script>
+    <h4 class="mt-4">ECL Stage Performance</h4>
+    <canvas id="eclStageChart"></canvas>
 
+    <h4 class="mt-4">IFRS9 Data Insights</h4>
+    <canvas id="ifrs9InsightsChart"></canvas>
+
+    <h4 class="mt-4">IFRS9 Data Trends</h4>
+    <canvas id="ifrs9DashboardChart"></canvas>
+  </div>
+
+  <script>
+    new Chart(document.getElementById("dataQualityChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Quality", "Issues"],
+        datasets: [{ data: [98, 2], backgroundColor: ["#333333", "#555555"] }]
+      }
+    });
+
+    new Chart(document.getElementById("accuracyChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Accurate", "Errors"],
+        datasets: [{ data: [83, 17], backgroundColor: ["#666666", "#888888"] }]
+      }
+    });
+
+    new Chart(document.getElementById("completenessChart"), {
+      type: "doughnut",
+      data: {
+        labels: ["Complete", "Missing"],
+        datasets: [{ data: [100, 0], backgroundColor: ["#444444", "#777777"] }]
+      }
+    });
+
+    new Chart(document.getElementById("eclStageChart"), {
+      type: "bar",
+      data: {
+        labels: ["Stage 1", "Stage 2", "Stage 3"],
+        datasets: [
+          { label: "Target (%)", data: [90, 70, 40], backgroundColor: "#333333" },
+          { label: "Current (%)", data: [88, 65, 35], backgroundColor: "#555555" }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: { y: { beginAtZero: true, max: 100 } }
+      }
+    });
+
+    new Chart(document.getElementById("ifrs9InsightsChart"), {
+      type: "bar",
+      data: {
+        labels: ["Q1", "Q2", "Q3", "Q4"],
+        datasets: [
+          { label: "PD", data: [2.5, 3.1, 3.8, 4.2], backgroundColor: "#444444" },
+          { label: "LGD", data: [40, 45, 50, 55], backgroundColor: "#666666" }
+        ]
+      }
+    });
+
+    new Chart(document.getElementById("ifrs9DashboardChart"), {
+      type: "line",
+      data: {
+        labels: ["January", "February", "March", "April", "May"],
+        datasets: [{
+          label: "Trends",
+          data: [12, 19, 3, 5, 2],
+          borderColor: "#333333",
+          fill: false
+        }]
+      }
+    });
+  </script>
 </body>
 </html>
