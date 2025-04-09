@@ -1,53 +1,29 @@
-<!DOCTYPE html>
+{% extends 'base_dashboard.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logistic Regression</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            text-align: center;
-            margin: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
-        h2 {
-            color: #333333;
-        }
-        .image-container {
-            margin: 20px 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .description {
-            color: #555555;
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Logistic Regression</h2>
 
-        <!-- Static image provided by Django -->
-        <div class="image-container">
-            <img src="{% static 'logistic_regression_images/model.png' %}" alt="Logistic Regression Image">
-        </div>
+{% block title %}Logistic Regression{% endblock %}
 
-        <!-- Description of the Logistic Regression model -->
-        <div class="description">
-            <p>ROC score is 0.8447</p>
-        </div>
-    </div>
-</body>
-</html>
+{% block content %}
+<div class="section">
+  <h2>📈 Logistic Regression</h2>
+  <p>
+    We implement Logistic Regression as a reliable and interpretable model to estimate the probability of binary outcomes — such as loan default, claims occurrence, or fraud detection. ...
+  </p>
+  <ul class="features">
+    <li>Identify key drivers of risk.</li>
+    <li>Score customers or policies based on risk level.</li>
+    <li>Segment portfolios by likelihood of specific behaviors (e.g. lapse or renew).</li>
+  </ul>
+  <h5 class="mt-4">Key features:</h5>
+  <ul class="features">
+    <li>Probability-based outputs (0 to 1).</li>
+    <li>Easy-to-understand coefficients for explainability.</li>
+    <li>Handles categorical and numerical inputs.</li>
+  </ul>
+
+  <!-- 🔥 Inserted image here -->
+  <div class="text-center mt-4">
+    <img src="{% static 'logistic_regression_images/model.png' %}" alt="ROC Curve" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  </div>
+</div>
+{% endblock %}

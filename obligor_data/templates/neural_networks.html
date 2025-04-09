@@ -1,0 +1,39 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Page Title Here{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neural Networks</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 40px; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #2b2b2b; }
+        h3 { margin-top: 30px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Neural Networks</h1>
+        <p>Our Neural Networks module is designed to handle complex, non-linear relationships where traditional models may fall short. With multi-layer architectures, our neural nets can uncover deep patterns in large, high-dimensional datasets — ideal for:</p>
+
+        <ul>
+            <li>Detecting subtle trends in claims, underwriting, or customer behavior.</li>
+            <li>Improving predictive accuracy in scenarios with non-linear dependencies.</li>
+            <li>Enhancing personalization through adaptive learning.</li>
+        </ul>
+
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Deep learning capability for high-dimensional input.</li>
+            <li>Automatic feature interaction modeling.</li>
+            <li>Scalable architecture adaptable to growing data.</li>
+        </ul>
+    </div>
+</body>
+</html>
+{% endblock %}

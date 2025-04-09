@@ -8,14 +8,14 @@ from .models import (
     StatementOfCashflow,
 )
 
-def financial_statements_landing(request):
+def financial_statements_finlanding(request):
     context = {
         "incomes": StatementOfIncome.objects.all(),
         "positions": StatementOfFinancialPosition.objects.all(),
         "equitys": StatementOfChangesInEquity.objects.all(),
         "cashflows": StatementOfCashflow.objects.all(),
     }
-    return render(request, "landing.html", context)
+    return render(request, "finlanding.html", context)
 
 def view_excel(request, statement_type, file_id):
     model_map = {

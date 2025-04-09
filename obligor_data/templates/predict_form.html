@@ -1,3 +1,8 @@
+{% extends 'base_dashboard.html' %}
+
+{% block title %}Page Title Here{% endblock %}
+
+{% block content %}
 <form method="POST">
     {% csrf_token %}
     <label>Person Age:</label>
@@ -35,3 +40,4 @@
 
     <button type="submit">Predict ECL</button>
 </form>
+{% endblock %}
