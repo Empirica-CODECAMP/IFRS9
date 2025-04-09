@@ -26,6 +26,8 @@ urlpatterns = [
     path('stage1/', stage1_view, name='stage1'),
     path('stage2/', stage2_view, name='stage2'),
     path('stage3/', stage3_view, name='stage3'),
+    path('landing/', landing, name='landing_home'),
+
 
     
 ]
