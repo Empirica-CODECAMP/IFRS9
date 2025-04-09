@@ -93,6 +93,14 @@
   <div class="sidebar">
     <h4 class="text-center">Empirica IFRS 9 PAM 1000 ®</h4>
 
+    <!-- 🏠 Home Button -->
+  <div class="sidebar-group">
+    <div class="sidebar-group-title">🏠 Home</div>
+    <a href="{% url 'landing_home' %}" style="background-color: #2196F3; font-weight: bold; color: white;">
+      📘 PAM 1000 Overview
+    </a>
+  </div>
+
     <!-- 📂 Obligor Group -->
     <div class="sidebar-group">
       <div class="sidebar-group-title">📂 Data Analytics</div>
@@ -135,7 +143,9 @@
   <!-- Main Content -->
   <div class="content">
     <h2 class="mt-4">Welcome to IFRS9 Dashboard</h2>
-    <a href="{% url 'landing_home' %}" class="btn btn-dark float-end" style="margin-top: -35px;">Home</a>
+
+    
+
 
 
     <a href="{% url 'loan_analytics' %}" class="btn btn-management-report">Management Report</a>

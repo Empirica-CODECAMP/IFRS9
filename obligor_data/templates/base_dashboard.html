@@ -32,7 +32,13 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <h4 class="text-center">Empirica IFRS 9 PAM 1000 ®</h4>
-
+ <!-- 🏠 Home Button -->
+ <div class="sidebar-group">
+  <div class="sidebar-group-title">🏠 Home</div>
+  <a href="{% url 'landing_home' %}" style="background-color: #007bff; font-weight: bold; color: white;">
+    📘 PAM1000 Overview
+  </a>
+</div>
     <div class="sidebar-group">
       <div class="sidebar-group-title">📂 Data Analytics</div>
       <a href="{% url 'obligor_list' %}">Obligor Level Data</a>
