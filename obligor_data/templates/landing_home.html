@@ -1,0 +1,93 @@
+{% extends 'base_dashboard.html' %}
+{% load static %}
+
+{% block content %}
+<div class="p-5 bg-light">
+  <h1 class="text-primary fw-bold">PAM 1000 (IFRS 9 ECL)</h1>
+  <p class="text-muted fs-5 mt-3">
+    Our IFRS 9 solution, <strong>PAM1000</strong>, is a comprehensive Expected Credit Loss (ECL) engine designed for seamless integration. It offers automated Stage Allocation, Lifetime and 12-Month ECL calculations, and generates professional reports—including Waterfall, Vintage, Transition Matrix, and Portfolio summaries—in both Excel and PDF formats. Built for performance, it ensures compliance, scalability, and intuitive insights for financial decision-making.
+  </p>
+</div>
+
+<div class="container mt-5">
+  <h2 class="fw-bold mb-4 text-center">IFRS 9 – Background</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-start border-danger shadow-sm h-100">
+        <div class="card-body">
+          <p>Post 2008 financial crisis, regulators around the world realized that history-based accounting standards can be extremely misleading and a paradigm shift in accounting methodologies is needed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-start border-warning shadow-sm h-100">
+        <div class="card-body">
+          <p>In July 2014, IASB issued IFRS 9 standard which replaced existing IAS 39 provisioning method. The IASB stated that IAS 39 delayed recognition of credit losses; a forward-looking approach is introduced.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-start border-info shadow-sm h-100">
+        <div class="card-body">
+          <p>IFRS 9 became effective globally in Jan 2018 and posed huge challenges for accounting firms and institutions unfamiliar with predictive analytics or expected loss modeling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="fw-bold mb-4 text-center">ECL Estimation Methodology</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card border-success shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="text-success fw-bold">Portfolio Segmentation</h5>
+          <p>Segmentation & pooling of portfolio based on discriminant analysis and statistical mass.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-danger shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="text-danger fw-bold">MEVs Identification</h5>
+          <p>Identify statistically significant macroeconomic variables for default rate modeling.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-info shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="text-info fw-bold">MES Simulations</h5>
+          <p>Macro-economic scenario projections with probabilistic weightings.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card border-warning shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="text-warning fw-bold">Bucket-wise EAD Estimation</h5>
+          <p>Expose current balances by days-past-due (DPD) buckets as defined by IFRS 9.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-secondary shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="fw-bold">PIT PD Estimation</h5>
+          <p>Point-in-time default rate structure for each segment of portfolio exposure.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-primary shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="text-primary fw-bold">LGD Estimation</h5>
+          <p>Point-in-time loss given default (LGD) modeling for portfolio segments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -18,15 +18,14 @@ from django.urls import path, include
 from obligor_data.views import home
 from calculations import views as calculations_views  # Import your view
 from calculations.admin import admin_site
-from obligor_data.views import landing, home 
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('finance/', include('finance.urls')),
     path('obligor_data/', include('obligor_data.urls')),
-    path('', landing, name='landing'),               # 👈 New default landing page
-    path('dashboard/', home, name='ifrs9_home'),
+    path('', home, name='home'),
     path('scenario/', include('scenario_data.urls')),
     path("analysis/", include("analyis.urls")),
     path('financial-statements/', include('financial_statements.urls')),
