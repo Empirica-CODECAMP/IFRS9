@@ -13,7 +13,9 @@ from .views import (
 
 urlpatterns = [
     path("", obligor_list, name="obligor_list"),
-    path('', home, name='home'),
+    # path('', home, name='home'),
+        path('', views.landing, name='landing'),            # 👈 now the default landing page
+        path('dashboard/', views.home, name='ifrs9_home'),
     # path('loan-data/', views.loan_data_list('request'), name='loan_data_list'),
 
     # path("predict/", predict_ecl, name="predict_ecl"),

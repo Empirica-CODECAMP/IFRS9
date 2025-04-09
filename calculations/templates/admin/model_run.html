@@ -1,5 +1,9 @@
 {% extends "admin/change_list.html" %}
+{% extends 'base_dashboard.html' %}
 
+{% block title %}Page Title Here{% endblock %}
+
+{% block content %}
 {% block content %}
     <h1>Model Run Administration</h1>
 
@@ -10,4 +14,5 @@
 
     <!-- Include the default changelist content -->
     {{ block.super }}
+{% endblock %}
 {% endblock %}

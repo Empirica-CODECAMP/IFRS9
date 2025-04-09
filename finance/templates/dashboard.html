@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+{% extends 'base_dashboard.html' %}
 
+{% block title %}Page Title Here{% endblock %}
+
+{% block content %}
 {% block content %}
 <h2>IFRS 9 Dashboard</h2>
 <p><strong>Total Expected Credit Loss (ECL):</strong> P{{ total_ecl|floatformat:2 }}</p>
@@ -28,4 +32,5 @@
         {% endfor %}
     </tbody>
 </table>
+{% endblock %}
 {% endblock %}

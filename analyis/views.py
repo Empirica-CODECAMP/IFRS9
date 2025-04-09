@@ -125,3 +125,8 @@ def loan_data_list(request):
 
     loan_summary = summary.to_dict(orient="records")
     return render(request, "loan_data_list.html", {"loan_summary": loan_summary})
+
+def landing(request):
+    return render(request, 'homepage/landing.html')
+def home(request):
+    return render(request, 'home.html')

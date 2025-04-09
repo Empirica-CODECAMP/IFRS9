@@ -1,83 +1,8 @@
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Model Run Status</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            padding: 40px 10px;
-            color: #222;
-        }
+{% extends 'base_dashboard.html' %}
 
-        .container {
-            background: #fff;
-            max-width: 700px;
-            margin: auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+{% block title %}Page Title Here{% endblock %}
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        p {
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        pre {
-            background: #eee;
-            padding: 10px;
-            border-radius: 6px;
-            overflow: auto;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-            background: #333;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 5px;
-        }
-
-        a:hover {
-            background: #555;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Model Run Status</h1>
-        <p><strong>Model Name:</strong> {{ model_run.model_name }}</p>
-        <p><strong>Run Date:</strong> {{ model_run.run_date }}</p>
-        <p><strong>Input Parameters:</strong></p>
-        <pre>{{ model_run.input_parameters }}</pre>
-        <p><strong>Run Number:</strong> {{ model_run.Run_Nr }}</p>
-        <p><strong>Previous Run Number:</strong> {{ model_run.PrevRun_Nr }}</p>
-        <p><strong>New Business Run Number:</strong> {{ model_run.NBRun_Nr }}</p>
-        <p><strong>Status:</strong> {{ model_run.status }}</p>
-
-        {% if model_run.status == "failed" %}
-        <p><strong>Error Message:</strong> {{ model_run.error_message }}</p>
-        {% endif %}
-
-        {% if model_run.result_file %}
-        <p><strong>Result File:</strong> <a href="{{ model_run.result_file.url }}">Download</a></p>
-        {% endif %}
-
-        <a href="{% url 'run_model' %}">Run Another Model</a>
-    </div>
-</body>
-</html> -->
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,3 +79,4 @@
     </div>
 </body>
 </html>
+{% endblock %}

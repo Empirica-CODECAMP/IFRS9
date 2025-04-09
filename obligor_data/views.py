@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Obligor
+from django.shortcuts import render
 
 def obligor_list(request):
     obligors = Obligor.objects.all()
@@ -7,11 +8,14 @@ def obligor_list(request):
 def logistic_regression_detail(request):
     return render(request, 'logistic_regression_images/logistic_regression_detail.html')
 
+# Landing Page
+def landing(request):
+    return render(request, 'landing.html') 
 
 
 def home(request):
     return render(request, 'home.html')
-from django.shortcuts import render
+
 
 def neural_networks_view(request):
     return render(request, 'neural_networks.html')
