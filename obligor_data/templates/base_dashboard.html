@@ -59,19 +59,21 @@
       <a href="{% url 'stage3' %}">Stage 3</a>
     </div>
 
-    <div class="sidebar-group">
-      <div class="sidebar-group-title">📝 ECL Reports</div>
-      <a href="{% url 'stage_allocation_report_list' %}">Stage Allocation Report</a>
-      <a href="{% url 'loss_allowance_list' %}">Loss Allowance</a>
-      <a href="{% url 'credit_risk_exposure_list' %}">Credit Risk Exposure</a>
-    </div>
 
     <div class="sidebar-group">
       <div class="sidebar-group-title">📁 Financials</div>
       <a href="{% url 'financial_statements_finlanding' %}">Financial Statements</a>
       <a href="{% url 'calculations' %}">🧮 Calculations</a>
     </div>
+           <!-- ECL Reports Dropdown -->
+           <div class="sidebar-group">
+            <div class="sidebar-group-title">📄 REPORTS</div>
+
+            <a class="dropdown-item" href="{% url 'ecl_landing' %}">ECL Reports</a>
+          </div>
+        </div>
   </div>
+
 
   <!-- Main Content -->
   <div class="content">
